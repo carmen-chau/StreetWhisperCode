@@ -2,10 +2,10 @@
 # Note: The import for scipy may not be needed
 # Note # 2: The installation of the package dependecies using this text file has not been tested thoroughly
 git+https://github.com/openai/whisper.git
--qq https://github.com/pyannote/pyannote-audio/archive/refs/heads/develop.zip
 setuptools-rust
 jiwer
 ffmpeg-python
 numpy
 torchtext
 openai
+# Then, run pip install -qq https://github.com/pyannote/pyannote-audio/archive/refs/heads/develop.zip
