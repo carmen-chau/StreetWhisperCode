@@ -1,7 +1,3 @@
 # Dependencies needed for Whisper Transcription V1
-# Note: The import for scipy may not be explicitly typed
-# Note # 2: The installation of the package dependecies using this text file has not been tested thoroughly
-git+https://github.com/openai/whisper.git
-setuptools-rust
-jiwer
-numpy
+-q git+https://github.com/openai/whisper.git > /dev/null
+scipy

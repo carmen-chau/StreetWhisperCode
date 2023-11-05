@@ -1,11 +1,12 @@
 """
-This is the **modified** code from the Google Collab 2
+This is the **modified code* based on the Google Collab 2
 """
 # Import statements
 import whisper
 import datetime
 import subprocess
 import torch
+# NEW IMPORT BELOW
 from pyannote.audio.pipelines.speaker_verification import PretrainedSpeakerEmbedding
 from pyannote.audio import Audio
 from pyannote.core import Segment
@@ -26,7 +27,7 @@ embedding_model = PretrainedSpeakerEmbedding("speechbrain/spkrec-ecapa-voxceleb"
 # On Windows computer, I am not sure whether calling device=torch.device("cuda") would work.
 
 #Step 3: Define the name of the audio files that we wish to transcribe
-audio_name = "audio_files/yinsuSample2PeopleInterview.mp3" # Try passing in a .wav file and seeing if it can be transcribed
+audio_name = "audio_files/pokimane_valk.mp3" # Try passing in "audio_files/pokimane_valk.mp3" and see if transcription still works
 index_of_latest_backslash_char = audio_name.rfind("/")
 index_of_latest_dot_char = audio_name.rfind(".")
 input_audio_name = audio_name[index_of_latest_backslash_char + 1 : index_of_latest_dot_char]
@@ -51,11 +52,10 @@ if language == 'English' and model_size != 'large':
     name_wav_audio_file = audio_name
     destination_folder = "audio_files"  # Temporary placeholder folder location name. In actual app, this may be an user input field
 
-  mono_name_wav_audio_file = destination_folder + "/" + "mono_" + input_audio_name + ".wav"
+  mono_name_wav_audio_file = destination_folder + "/" + "mono_" + input_audio_name + "testing_version" + ".wav"
 
   subprocess.call(['ffmpeg', '-n', '-i', name_wav_audio_file, '-ac', '1', mono_name_wav_audio_file])
-  # In above line, if the audio has mono audio, covert audio to stero in order for transcription to occur properly
-  # NOTE: This will create a new audio file with the name in variable "mono_name_wav_audio_file". This file is .wav with mono audio
+  # In above line, ff the audio has mono audio, covert audio to stero in order for transcription to occur properly
 
   path = mono_name_wav_audio_file
   result=model.transcribe(path)
@@ -74,13 +74,15 @@ if language == 'English' and model_size != 'large':
     # Whisper overshoots the end timestamp in the last segment
     end = min(duration, segment["end"])
     clip = Segment(start, end)
-    waveform = audio.crop(path, clip)
+    waveform, sample_rate = audio.crop(path, clip)
     return embedding_model(waveform[None])
+    # used to be: return embedding_model(waveform[None])
 
   # Step 8
   embeddings = np.zeros(shape=(len(segments), 192))
   for i, segment in enumerate(segments):
     embeddings[i] = segment_embedding(segment)
+    # print(segment_embedding(segment))
   embeddings = np.nan_to_num(embeddings)
 
   # #Step 9
@@ -94,7 +96,7 @@ if language == 'English' and model_size != 'large':
   def time(secs):
     return datetime.timedelta(seconds=round(secs))
 
-  text_file_name = "transcript_yinsu_2_ppl.txt"
+  text_file_name = "transcript_poki_rae_2_ppl"
   full_text_file_path = text_file_name + ".txt"
   f = open(full_text_file_path, "w")
 

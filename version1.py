@@ -12,7 +12,7 @@ model = whisper.load_model(model_name)
 
 
 #Step 2: Define the name of the audio files that we wish to transcribe
-audio_name = 'audio_files/AREA21 - All I Need_xBmQyGEaLiE.mp3' # define as a string
+audio_name = 'audio_files/AREA21.mp3' # define as a string
 
 # Step 3: Transcribe the audio
 result = model.transcribe(audio_name, fp16 = False)

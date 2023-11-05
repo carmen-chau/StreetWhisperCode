@@ -1,11 +1,8 @@
 # Dependencies needed for Whisper Transcription V2
-# Note: The import for scipy may not be needed
-# Note # 2: The installation of the package dependecies using this text file has not been tested thoroughly
-git+https://github.com/openai/whisper.git
+# First, manually run in command line: pip install -q git+https://github.com/openai/whisper.git > /dev/null
+# Then, manually run in command line: pip install cohere openai
+pyannote.audio==3.0.0
 setuptools-rust
-jiwer
+ffmpeg
 ffmpeg-python
-numpy
-torchtext
-openai
-# Then, run pip install -qq https://github.com/pyannote/pyannote-audio/archive/refs/heads/develop.zip
+jiwer
