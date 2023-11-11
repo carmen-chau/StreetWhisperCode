@@ -2,9 +2,10 @@
 # First, manually run in command line: pip install -q git+https://github.com/openai/whisper.git > /dev/null
 # Then, manually run in command line: pip install cohere openai
 # Note: The installation for googletrans==4.0.0-rc1 is for potential translation work.
+#googletrans==4.0.0-rc1
 pyannote.audio==3.0.0
 setuptools-rust
 ffmpeg
 ffmpeg-python
 jiwer
-googletrans==4.0.0-rc1
+deep-translator

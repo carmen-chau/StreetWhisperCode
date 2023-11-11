@@ -15,7 +15,8 @@ import contextlib
 from sklearn.cluster import AgglomerativeClustering
 import numpy as np
 # NEW IMPORT BELOW FOR TEXT TRANSLATION
-from googletrans import Translator #(not really accurate)
+#from googletrans import Translator #(no longer using this one as easy to get IP banned due to high usuage of API)
+from deep_translator import MyMemoryTranslator
 
 
 # Step 1: Choose model by defining the number of speakers, language and size of the language model used for transcription
@@ -57,11 +58,11 @@ path = mono_name_wav_audio_file
 result=model.transcribe(path)
 segments = result["segments"]
 
+
 print("Text prior to translation")
 print(segments[0])
-translator = Translator()
 for text_segments in segments:
-    text_segments["text"] = translator.translate(text_segments["text"], dest='fr').text
+    text_segments["text"] = MyMemoryTranslator(source='english', target='french', de="cchappy012@gmail.com").translate(text_segments["text"])
 print("Text after translation")
 print(segments[0])
 
@@ -107,5 +108,5 @@ f = open(full_text_file_path, "w")
 for (i, segment) in enumerate(segments):
   if i == 0 or segments[i - 1]["speaker"] != segment["speaker"]:
     f.write("\n" + segment["speaker"] + ' ' + str(time(segment["start"])) + '\n')
-  f.write(segment["text"][1:] + ' ')
+  f.write(segment["text"][0:] + ' ')
 f.close()
