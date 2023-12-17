@@ -12,7 +12,7 @@ audio_file_path = "audio_files/spanish_interview.wav"
 
 #Step 3: Transcribe
 # Note: The parameter task="translate" is OPTIONAL if the original audio file was in english
-# By default, task = "translate" translates the language of the original audio file to english
+# By default, task = "translate" translates the language of the original audio file to english.
 transcription = whisper_model.transcribe(audio = audio_file_path, task = "translate", fp16=False)
 
 # Step 4: Get the "segments" from the transcription
