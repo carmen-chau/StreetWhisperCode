@@ -19,5 +19,6 @@ result = model.transcribe(audio_name, fp16 = False)
 
 #Step 4: Retrieve the transcription text and write it to a text file
 transcription = result['text']
-with open("transcription.txt", "w", encoding="utf-8") as txt:
+transcription_file_path = "transcription.txt"
+with open(transcription_file_path, "w", encoding="utf-8") as txt:
     txt.write(transcription)
