@@ -6,7 +6,7 @@ Note: Download file dependencies from requirements2.txt
 import whisper
 import time
 from pyannote.audio import Pipeline
-from pyannote_combo import diarize_text
+from merge_timestamps import diarize_text
 
 #Step 2: Loads the audio file path
 # NOTE: The .wav file was too large to upload onto github
