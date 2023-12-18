@@ -8,10 +8,15 @@ from pyannote.audio import Pipeline
 from pyannote_combo import diarize_text
 
 #Step 2: Loads the audio file path
+# NOTE: The .wav file was too large to upload onto github
+# You can find the english wav file original video source here: https://www.youtube.com/watch?v=naIkpQ_cIt0&t=30s
+# If you want to try and transcribe/translate a spanish video, can use this as example: https://www.youtube.com/watch?v=QUEQJFUk8A0&t=22s
 audio_file_path = "audio_files/eng_interview.wav"
 
 #Step 3: Defines the name of the whisper model that is downloaded locally. Then, load this model.
 #NOTE: Here, we are using Whisper large version 2
+# The model was also too large to import onto github
+# You can downloadd yourself by going to your .cache directory, making a copy of the large-v2 model, then moving it to this directory
 model_name = "copied-large-v2.pt"
 model = whisper.load_model(model_name)
 
