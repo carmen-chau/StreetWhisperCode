@@ -1,4 +1,5 @@
-# Dependencies needed for Whisper Transcription V2
-# Note: This version only does transcription/translation and NOT speaker diarization
+# Dependencies needed for whisper_with_diarization.py
+# Note: This version does BOTH transcription/translation and speaker diarization
 # Run manually in command line: pip install -q git+https://github.com/openai/whisper.git > /dev/null
+#Then, run the following:
 pip install pyannote.audio==3.1.1
