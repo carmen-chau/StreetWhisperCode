@@ -1,3 +1,2 @@
-# Dependencies needed for Whisper Transcription V1
+# Dependencies needed for the file whisper_no_diarization.py (script that ONLY DOES transcription/translation)
 # First, manually run in command line: pip install -q git+https://github.com/openai/whisper.git > /dev/null
-scipy
