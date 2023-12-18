@@ -1,6 +1,7 @@
 """
 File description: This file contains the code used to run transcription/translation on audio files
 It DOES NOT SUPPORT SPEAKER DIARIZATION.
+Note: Download file dependencies from requirements.txt
 
 Notes:
     1. Code purposefully NOT organized into methods, will create another file that organizes code into methods (for preparation to merge with the Electron code).

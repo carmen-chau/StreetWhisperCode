@@ -1,5 +1,6 @@
 """
-This file contains code that attempts to transcribe AND translate audio files
+This file contains code that SUPPORTS SPEAKER DIARIZATION to transcribe AND translate audio files
+Note: Download file dependencies from requirements2.txt
 """
 #Step 1: Import statements
 import whisper
