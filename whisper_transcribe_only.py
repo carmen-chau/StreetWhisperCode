@@ -10,7 +10,7 @@ import time
 
 # Step 1: Choose model (by default, choose the large_v2 model)
 # Need to configure variable model_name to be customizable based on user desired input.
-model_name = "large-v2" #Possible parameters:['tiny.en', 'tiny', 'base.en', 'base', 'small.en', 'small', 'medium.en', 'medium', 'large-v1', 'large-v2', 'large']
+model_name = "copied-large-v2.pt" #Possible parameters:['tiny.en', 'tiny', 'base.en', 'base', 'small.en', 'small', 'medium.en', 'medium', 'large-v1', 'large-v2', 'large']
 whisper_model = whisper.load_model(model_name)
 
 #Step 2: Input audio. ASSUME for now that audio will be .wav type
