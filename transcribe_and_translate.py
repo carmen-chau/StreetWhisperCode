@@ -11,7 +11,7 @@ from pyannote_combo import diarize_text
 # NOTE: The .wav file was too large to upload onto github
 # You can find the english wav file original video source here: https://www.youtube.com/watch?v=naIkpQ_cIt0&t=30s
 # If you want to try and transcribe/translate a spanish video, can use this as example: https://www.youtube.com/watch?v=QUEQJFUk8A0&t=22s
-audio_file_path = "audio_files/eng_interview.wav"
+audio_file_path = "audio_files/spanish_interview.wav"
 
 #Step 3: Defines the name of the whisper model that is downloaded locally. Then, load this model.
 #NOTE: Here, we are using Whisper large version 2
@@ -32,38 +32,33 @@ asr_result = model.transcribe(audio = audio_file_path, task = "translate", fp16=
 
 #Step 6: Using diarization pipeline, run diarization
 # NOTE: The pipeline should auto-detect the number of speakers in the file, but if you want to specify, can pass in addditional argument: num_speakers=2
-diarization_result = speaker_diarization_pipeline("audio_files/eng_interview.wav")
+diarization_result = speaker_diarization_pipeline(audio_file_path)
 
 #Step 7: Calling the imported pyannote_combo file's diarize_text to create a collection of strings with the timestamps, speaker identification and text.
 final_result = diarize_text(asr_result, diarization_result)
 
-# Printing purposes
-for seg, spk, sent in final_result:
-    line = f'{seg.start:.2f} {seg.end:.2f} {spk} {sent}'
-    print(line)
+# Step 8: Create a new text file (in this sample code, the text file is called "spanish_interview.txt").
+# We write the headers "Timestamp" and "Text" with a 25 long "space gap" between the words (for formatting)
+txt_header = f"{'Timestamp:':<25} {'Speaker:':<19} Text:"
+with open("combo_eng_interview.txt", "a") as txt_file:
+    txt_file.write(txt_header + "\n")
+    txt_file.close()
 
-# # NOTE: STEP 8 AND 9 ARE NOT TESTED YET, SO COMMENTED OUT
-# # Step 8: Create a new text file (in this sample code, the text file is called "spanish_interview.txt").
-# # We write the headers "Timestamp" and "Text" with a 25 long "space gap" between the words (for formatting)
-# txt_header = f"{'Timestamp:':<25} {'Speaker:':<20} Text"
-# with open("combo_eng_interview.txt", "a") as txt_file:
-#     txt_file.write(txt_header + "\n")
-#     txt_file.close()
-# #
-# # # Step 9: Writing the result form Step 7 into a text file
-# for seg, spk, sent in final_result:
-#     with open("combo_eng_interview.txt", "a") as txt_file:
-#         start_timestamp_as_time_obj = time.gmtime(seg.start)
-#         converted_start_timestamp = time.strftime("%H:%M:%S",start_timestamp_as_time_obj)  # Formats the start timestamp as hour:minute:second format
-#
-#         end_timestamp_as_time_obj = time.gmtime(seg.end)
-#         converted_end_timestamp = time.strftime("%H:%M:%S", end_timestamp_as_time_obj)  # Formats the end timestamp as hour:minute:second format
-#
-#         full_timestamp = converted_start_timestamp + "-" + converted_end_timestamp
-#         f_string_formatted_timestamp = f"{full_timestamp:<25}"
-#
-#         f_string_formatted_speaker = f"{spk:<20}"
-#
-#         f_string_formatted_text = f"{sent}"
-#
-#         txt_file.write(f_string_formatted_timestamp + f_string_formatted_speaker + f_string_formatted_text + "\n")
+# Step 9: Writing the result form Step 8 into a text file
+for seg, spk, sent in final_result:
+    with open("combo_eng_interview.txt", "a") as txt_file:
+        start_timestamp_as_time_obj = time.gmtime(float(seg.start))
+        converted_start_timestamp = time.strftime("%H:%M:%S",start_timestamp_as_time_obj)  # Formats the start timestamp as hour:minute:second format
+
+        end_timestamp_as_time_obj = time.gmtime(float(seg.end))
+        converted_end_timestamp = time.strftime("%H:%M:%S", end_timestamp_as_time_obj)  # Formats the end timestamp as hour:minute:second format
+
+        full_timestamp = converted_start_timestamp + "-" + converted_end_timestamp
+        f_string_formatted_timestamp = f"{full_timestamp:<25}"
+
+        f_string_speaker = f'{spk}'
+        f_string_formatted_speaker = f"{f_string_speaker:<19}"
+
+        f_string_formatted_text = f"{sent}"
+
+        txt_file.write(f_string_formatted_timestamp + f_string_formatted_speaker + f_string_formatted_text + "\n")
