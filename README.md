@@ -4,7 +4,9 @@ A github directory storing the code for the STREET Whisper Transcription/Transla
 # Description of folder structure
 Currently there are 2 different Python file one can run.
 
-Note: Both files utilizes a locally downloaded Whisper model (.pt file). Since this file is too large to upload onto Github...
+Note: Both files utilizes a locally downloaded Whisper model (.pt file). Since this file is too large to upload onto Github, you would need to manually download this file. To do so, instead of doing ```whisper.load_model("copied-large-v2.pt")```, you would do ```whisper.load_model("large-v2.pt")``` to download the model onto your local system. Then, navigate to your .cache directory, and "move' this model file to your directory where the transcription/translation scripts are to use locally. 
+
+TEMP NOTE: You can find file ```copied-large-v2.pt``` here for your reference: [INSERT GOOGLE DRIVE LINK HERE]
 
 File #1: ```whisper_no_diarization.py``` is a file that ONLY transcribes/translates the audio file. It does NOT provide speaker diarization.
 
