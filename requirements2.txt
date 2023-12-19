@@ -2,4 +2,5 @@
 # Note: This version does BOTH transcription/translation and speaker diarization
 # Run manually in command line: pip install -q git+https://github.com/openai/whisper.git > /dev/null
 #Then, run the following:
-pip install pyannote.audio==3.1.1
+pyannote.audio==3.1.1
+iso639-lang
