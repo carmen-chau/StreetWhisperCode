@@ -1,5 +1,13 @@
 # StreetWhisperCode
-A github directory storing the code for the STREET Whisper Transcription Application
+A github directory storing the code for the STREET Whisper Transcription/Translation Application
+
+# Description of folder structure
+Currently there are 2 different Python file one can run.
+
+Note: Both files utilizes a locally downloaded Whisper model (.pt file). Since this file is too large to upload onto Github...
+
+File #1: ```whisper_no_diarization.py``` is a file that ONLY transcribes/translates the audio file. It does NOT provide speaker diarization.
+File #2: ```whisper_with_diarization.py``` is a file that, on top of what #1 does, ALSO does speaker diarization. ```whisper_with_diarization.py``` uses an additional file called ```merge_timestamps.py``` for speaker diarization. It also uses an additional file called ```config.yaml``` that contains the dependencies needed to load the diarization pipeline locally from Pyannote. 
 
 # Instructions for running the code
 Note: The instructions will most likely differ between Macbooks and Windows. Currently, we only have instructions for running on a Macbook. 
