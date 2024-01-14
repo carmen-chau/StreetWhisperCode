@@ -329,7 +329,7 @@ def write_list_to_csv(list_of_csv_content: list[str], output_csv_path: str) -> N
 if __name__ == "__main__":
 
     # Step 1: Loading models and defining input audio path + defining CSV Headers
-    loaded_whisper_model = define_whisper_model("copied-large-v2.pt")
+    loaded_whisper_model = define_whisper_model("xxxx.pt") # Insert .pt model name here
     input_audio_path = "audio_files/xxx.mp3" # Insert audio file name and extension here (extensions can include: .mp3, .wav)
     output_csv_headers = ["Timestamps", "Speaker No", "Text[Eng]"]
     output_csv_path = "xxx.csv" # Insert CSV file name, replacing the xxx characters
