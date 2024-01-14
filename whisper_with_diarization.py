@@ -103,7 +103,7 @@ with open("b10a_trimmed_test_club_speaker_oglang.csv", "w") as csv_file:
         speaker = autodetect_lang_final_result[i][1]  # Denotes the speaker that is currently "speaking" in the iteration
 
         if (speaker == curr_speaker) and i < len(autodetect_lang_final_result) - 1:
-            speaker_text_seg += autodetect_lang_final_result[i][2]
+            speaker_text_seg = speaker_text_seg + autodetect_lang_final_result[i][2] + "\n"
             end_timestamp_as_time_obj = time.gmtime(float(seg.end))
             end_speaker_timestamp = time.strftime("%H:%M:%S", end_timestamp_as_time_obj)
 
