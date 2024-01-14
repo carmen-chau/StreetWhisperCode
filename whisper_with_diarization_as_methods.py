@@ -330,9 +330,9 @@ if __name__ == "__main__":
 
     # Step 1: Loading models and defining input audio path + defining CSV Headers
     loaded_whisper_model = define_whisper_model("copied-large-v2.pt")
-    input_audio_path = "audio_files/B10b.mp3"
+    input_audio_path = "audio_files/xxx.mp3" # Insert audio file name and extension here (extensions can include: .mp3, .wav)
     output_csv_headers = ["Timestamps", "Speaker No", "Text[Eng]"]
-    output_csv_path = "B10b_eng.csv"
+    output_csv_path = "xxx.csv" # Insert CSV file name, replacing the xxx characters
 
     # Step 2: Processing and printing out detected language
     whisper_detect_lang = detecting_language(loaded_whisper_model, input_audio_path)
