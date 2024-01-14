@@ -111,31 +111,31 @@ def display_timestamps_speaker_and_text(whisper_result, speaker_diaz_result):
     """
     return diarize_text(whisper_result, speaker_diaz_result)
 
-def write_to_csv_both_lang_speakers(csv_headers: list[str], csv_file_path: str,
-                                    comb_result_autodetect, comb_result_eng):
-    """
-    This method attempts to make a CSV with the following format
-
-    Column 1: Timestamps (in HH:MM:SS) format (hour, minute, second)
-    Column 2: Speaker No (String denoting the identification of speakers)
-    Column 3: Column is named Text[Orig Lang] if the comb_result contains text
-    based on Whisper's autodetected language. Otherwise, it is named Text[Eng]
-
-    Preconditions:
-        - csv_headers contains only the column names listed above
-        - Valid combined eng and autodetected language objects are passed into this method
-        - The length of the Timestamps and Speaker No in the 2 CSV files are the same
-        - Likewise, the content of these 2 columns are assumed to be the same for each entry
-    """
-    autodetect_csv_content = gen_group_speakers_csv_content(comb_result_autodetect)
-    eng_csv_content = gen_group_speakers_csv_content(comb_result_eng)
-
-    with open(csv_file_path, "w") as comb_lang_csv_file:
-        comb_lang_csv_writer = csv.writer(comb_lang_csv_file)
-        comb_lang_csv_writer.writerow(csv_headers)  # Write the header row
-        for i in range(len(autodetect_csv_content)):
-            autodetect_csv_content[i].append(eng_csv_content[i][-1])
-            comb_lang_csv_writer.writerow(autodetect_csv_content[i])
+# def write_to_csv_both_lang_speakers(csv_headers: list[str], csv_file_path: str,
+#                                     comb_result_autodetect, comb_result_eng):
+#     """
+#     This method attempts to make a CSV with the following format
+#
+#     Column 1: Timestamps (in HH:MM:SS) format (hour, minute, second)
+#     Column 2: Speaker No (String denoting the identification of speakers)
+#     Column 3: Column is named Text[Orig Lang] if the comb_result contains text
+#     based on Whisper's autodetected language. Otherwise, it is named Text[Eng]
+#
+#     Preconditions:
+#         - csv_headers contains only the column names listed above
+#         - Valid combined eng and autodetected language objects are passed into this method
+#         - The length of the Timestamps and Speaker No in the 2 CSV files are the same
+#         - Likewise, the content of these 2 columns are assumed to be the same for each entry
+#     """
+#     autodetect_csv_content = gen_group_speakers_csv_content(comb_result_autodetect)
+#     eng_csv_content = gen_group_speakers_csv_content(comb_result_eng)
+#
+#     with open(csv_file_path, "w") as comb_lang_csv_file:
+#         comb_lang_csv_writer = csv.writer(comb_lang_csv_file)
+#         comb_lang_csv_writer.writerow(csv_headers)  # Write the header row
+#         for i in range(len(autodetect_csv_content)):
+#             autodetect_csv_content[i].append(eng_csv_content[i][-1])
+#             comb_lang_csv_writer.writerow(autodetect_csv_content[i])
 
 def gen_group_speakers_csv_content(comb_result) -> List:
     """
