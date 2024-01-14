@@ -127,15 +127,15 @@ def write_to_csv_both_lang_speakers(csv_headers: list[str], csv_file_path: str,
         - The length of the Timestamps and Speaker No in the 2 CSV files are the same
         - Likewise, the content of these 2 columns are assumed to be the same for each entry
     """
-    autodetech_csv_content = gen_group_speakers_csv_content(comb_result_autodetect)
+    autodetect_csv_content = gen_group_speakers_csv_content(comb_result_autodetect)
     eng_csv_content = gen_group_speakers_csv_content(comb_result_eng)
 
     with open(csv_file_path, "w") as comb_lang_csv_file:
         comb_lang_csv_writer = csv.writer(comb_lang_csv_file)
         comb_lang_csv_writer.writerow(csv_headers)  # Write the header row
-        for i in range(len(autodetech_csv_content)):
-            autodetech_csv_content[i].append(eng_csv_content[i][-1])
-            comb_lang_csv_writer.writerow(autodetech_csv_content[i])
+        for i in range(len(autodetect_csv_content)):
+            autodetect_csv_content[i].append(eng_csv_content[i][-1])
+            comb_lang_csv_writer.writerow(autodetect_csv_content[i])
 
 def gen_group_speakers_csv_content(comb_result) -> List:
     """
