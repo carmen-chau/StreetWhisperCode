@@ -25,4 +25,4 @@ To run ```whisper_no_diarization.py```, download the dependencies found in ```re
 
 To run ```whisper_with_diarization.py```, download the dependencies found in ```requirements2.txt```
 
-[IN PROGRESS] To run ```whisper_with_diarization_as_methods.py```, download the dependencies found in ```requirements3.txt```
+[IN PROGRESS] To run ```whisper_with_diarization_as_methods.py```, download the dependencies found in ```requirements2.txt```
