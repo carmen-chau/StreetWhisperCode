@@ -329,15 +329,15 @@ def write_list_to_csv(list_of_csv_content: list[str], output_csv_path: str) -> N
 if __name__ == "__main__":
 
     # Step 1: Loading models and defining input audio path + defining CSV Headers
-    loaded_whisper_model = define_whisper_model("xxxx.pt") # Insert .pt model name here
+    loaded_whisper_model = define_whisper_model("whisper_models/xxxx.pt") # Insert .pt model to replace the "xxxx.pt" placeholder text
     input_audio_path = "audio_files/xxx.mp3" # Insert audio file name and extension here (extensions can include: .mp3, .wav)
-    output_csv_headers = ["Timestamps", "Speaker No", "Text[Eng]"]
+    output_csv_headers = ["", "", ""] # Insert your headers here by replacing values of empty strings. Eg: ["Timestamps", "Speaker No", "Text[Eng]"]
     output_csv_path = "xxx.csv" # Insert CSV file name, replacing the xxx characters
     translate_to_english = True # True denotes that if audio file is not in english, you want to translate text to english. If False, text would be transcribed based on autodetected language from Whisper
 
     # Step 2: Processing and printing out detected language
     whisper_detect_lang = detecting_language(loaded_whisper_model, input_audio_path)
-    #print(whisper_detect_lang)
+    print(whisper_detect_lang)
 
     # Step 3: Conducting speaker diarization on the file (this step is the same for both transcription and translation)
     diarize_model = whisperx.DiarizationPipeline(device="cpu")
