@@ -7,6 +7,10 @@ Currently there are 2 different Python file one can run.
 __Note__: Both files utilizes a locally downloaded Whisper model (.pt file). Since this file is too large to upload onto Github, you would need to manually download this file. 
 To download these .pt files you would do ```whisper.load_model("large-v2.pt")``` to download the model onto your local system. Then, navigate to your .cache directory, and "move' this model file to your directory where the transcription/translation scripts are to use locally. 
 
+__Tip for MacOS__: For MacOS, the command to navigate to the downloaded .pt files (from your base directory is ```cd .cache/whisper```
+
+__Tip for Windows / Linux__: TBD
+
 File #1: ```whisper_no_diarization.py``` is a file that ONLY transcribes/translates the audio file. It does NOT provide speaker diarization.
 
 File #2 [DEPRECIATED]: ```whisper_with_diarization.py``` is a file that, on top of what #1 does, ALSO does speaker diarization. ```whisper_with_diarization.py``` uses an additional file called ```merge_timestamps.py``` for speaker diarization. It also uses an additional file called ```config.yaml``` that contains the dependencies needed to load the diarization pipeline locally from Pyannote. 
@@ -26,3 +30,6 @@ To run ```whisper_no_diarization.py```, download the dependencies found in ```re
 To run ```whisper_with_diarization.py```, download the dependencies found in ```requirements2.txt```
 
 [IN PROGRESS] To run ```whisper_with_diarization_as_methods.py```, download the dependencies found in ```requirements2.txt```
+
+***Windows/Linux installation instructions:***
+TBD
