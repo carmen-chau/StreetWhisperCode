@@ -337,7 +337,7 @@ if __name__ == "__main__":
 
     # Step 2: Processing and printing out detected language
     whisper_detect_lang = detecting_language(loaded_whisper_model, input_audio_path)
-    #print(whisper_detect_lang)
+    print(whisper_detect_lang)
 
     # Step 3: Conducting speaker diarization on the file (this step is the same for both transcription and translation)
     diarize_model = whisperx.DiarizationPipeline(device="cpu")
