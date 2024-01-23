@@ -75,9 +75,9 @@ def transcribe_audio(whisper_model: Any, audio_file_path: str, is_translate: Opt
         - Audio file path is defined and links to a .wav file.
     """
     if is_translate:
-        transcription = whisper_model.transcribe(audio=audio_file_path, task="translate", fp16=False)
+        transcription = whisper_model.transcribe(audio=audio_file_path, task="translate", fp16=False, verbose=False)
     else:
-        transcription = whisper_model.transcribe(audio=audio_file_path, fp16=False)
+        transcription = whisper_model.transcribe(audio=audio_file_path, fp16=False, verbose=False)
 
     return transcription
 
@@ -347,8 +347,9 @@ if __name__ == "__main__":
 
     if whisper_detect_lang == "English": # Case 1: The audio file is in English. Only available option is to transcribe to english
         autodetect_whisper_result = transcribe_audio(loaded_whisper_model, input_audio_path)
-        eng_lang_final_result = display_timestamps_speaker_and_text(autodetect_whisper_result, diarization_result)
-        write_audio_text_obj_to_csv(output_csv_headers, output_csv_path, eng_lang_final_result)
+        pure_eng_lang_final_result = display_timestamps_speaker_and_text(autodetect_whisper_result, diarization_result)
+        pure_eng_csv_content = gen_group_speakers_csv_content(pure_eng_lang_final_result)
+        write_list_to_csv(pure_eng_csv_content, output_csv_path)
 
     elif translate_to_english: # Case 2: The audio file is in another language. Here, we want to translate text to english.
         eng_whisper_result = transcribe_audio(loaded_whisper_model, input_audio_path, is_translate=True)
