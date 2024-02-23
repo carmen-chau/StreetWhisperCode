@@ -365,7 +365,9 @@ if __name__ == "__main__":
         # Step 5: Conducting speaker diarization on the file (this step is the same for both transcription and translation)
         # TODO: Using a possible check (using an intermediate variable denoting whether or not diarization is complete...
         # TODO (CONT): ... + using the https://pypi.org/project/progress/ library, can add a spinner to denote diarization running
+        print("Audio diarization has started, in progress")
         diarize_model = whisperx.DiarizationPipeline(device="cpu")
+        print("Audio diarization has completed")
         diarization_result = diarize_model(input_audio_path)
 
         # Step 6: Running conditional checks. The code to run will differ based on whether detected language is ENG or not.
